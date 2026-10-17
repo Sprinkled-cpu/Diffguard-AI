@@ -19,8 +19,26 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include API Router
+# Include API Router (both with /api prefix and direct for Vercel serverless rewrites)
 app.include_router(router)
+
+from fastapi import APIRouter
+from app.api.router import (
+    health_check,
+    get_presets,
+    get_preset,
+    run_pipeline,
+    scan_repository,
+    export_patch_file,
+)
+bare_router = APIRouter()
+bare_router.add_api_route("/health", health_check, methods=["GET"])
+bare_router.add_api_route("/presets", get_presets, methods=["GET"])
+bare_router.add_api_route("/presets/{preset_id}", get_preset, methods=["GET"])
+bare_router.add_api_route("/pipeline/run", run_pipeline, methods=["POST"])
+bare_router.add_api_route("/repo/scan", scan_repository, methods=["POST"])
+bare_router.add_api_route("/patch/export", export_patch_file, methods=["POST"])
+app.include_router(bare_router)
 
 @app.get("/")
 def root():
