@@ -6,6 +6,7 @@
     "build": "npm --prefix frontend install && npm --prefix frontend run build"
   },
   "devDependencies": {
+    "puppeteer-core": "^25.14.0",
     "vercel": "^64.5.0"
   }
 }
