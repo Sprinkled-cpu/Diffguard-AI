@@ -8,7 +8,11 @@ client = TestClient(app)
 def test_root_endpoint():
     response = client.get("/")
     assert response.status_code == 200
-    data = response.json()
+    
+    # Test JSON API root endpoint
+    api_resp = client.get("/api")
+    assert api_resp.status_code == 200
+    data = api_resp.json()
     assert data["app"] == "DiffGuard AI"
     assert data["status"] == "online"
 
