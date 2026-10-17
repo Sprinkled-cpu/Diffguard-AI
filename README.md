@@ -1,12 +1,16 @@
 # DiffGuard AI
 > **The Digital Mechanic for Broken Software Integrations**
 
+[![Vercel Deployment](https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel)](https://diffguard-ai.vercel.app)
 [![Python](https://img.shields.io/badge/Python-3.13-blue.svg)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-green.svg)](https://fastapi.tiangolo.com)
 [![React](https://img.shields.io/badge/React-18.3-61dafb.svg)](https://react.dev)
 [![Vite](https://img.shields.io/badge/Vite-5.2-purple.svg)](https://vitejs.dev)
 [![AST Guardrail](https://img.shields.io/badge/AST%20Guardrail-100%25%20Verified-brightgreen.svg)]()
 [![Tests](https://img.shields.io/badge/Tests-29%20Passed-success.svg)]()
+
+> **Live Production URL**: [https://diffguard-ai.vercel.app](https://diffguard-ai.vercel.app)  
+> **Vercel Dashboard**: [https://vercel.com/aditya-deeps-projects/diffguard-ai](https://vercel.com/aditya-deeps-projects/diffguard-ai)
 
 DiffGuard AI solves one of modern software engineering's biggest headaches: **breaking third-party API deprecations**. When providers like Stripe, OpenAI, or Twilio release breaking changes, DiffGuard AI deploys a 4-robot LangGraph assembly line to ingest changelogs, scan user codebases with Python native AST, evaluate crash risk (RED / YELLOW / GREEN), and generate AST-validated code patches with unified git diffs.
 
