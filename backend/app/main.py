@@ -40,7 +40,23 @@ bare_router.add_api_route("/repo/scan", scan_repository, methods=["POST"])
 bare_router.add_api_route("/patch/export", export_patch_file, methods=["POST"])
 app.include_router(bare_router)
 
-@app.get("/")
+from pathlib import Path
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
+frontend_dist = Path(__file__).resolve().parent.parent.parent / "frontend" / "dist"
+if (frontend_dist / "index.html").exists():
+    app.mount("/assets", StaticFiles(directory=str(frontend_dist / "assets")), name="assets")
+
+    @app.get("/")
+    def serve_frontend_root():
+        return FileResponse(str(frontend_dist / "index.html"))
+
+    @app.get("/favicon.ico")
+    def serve_favicon():
+        return FileResponse(str(frontend_dist / "index.html"))
+
+@app.get("/api")
 def root():
     return {
         "app": settings.app_name,
